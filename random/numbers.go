@@ -6,7 +6,7 @@ import (
 	rrand "math/rand"
 )
 
-func RandomInt32Safe(min, max int) int {
+func RandomIntSafe(min, max int) int {
 	if min > max {
 		panic("min > max")
 	}
@@ -33,4 +33,11 @@ func RandomInt(min, max int) int {
 		panic("min > max")
 	}
 	return rrand.Intn(max-min) + min
+}
+
+func RandomInt64(min, max int64) int64 {
+	if min > max {
+		panic("min > max")
+	}
+	return rrand.Int63n((max - min)) + min
 }

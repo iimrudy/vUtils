@@ -5,7 +5,7 @@ const letters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-
 func GenerateSafeString(length int) (string, error) {
 	ret := make([]byte, length)
 	for i := 0; i < length; i++ {
-		ret[i] = letters[RandomInt32Safe(0, len(letters))]
+		ret[i] = letters[RandomIntSafe(0, len(letters))]
 	}
 
 	return string(ret), nil

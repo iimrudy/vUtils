@@ -4,10 +4,14 @@ import (
 	"log"
 	"time"
 
+	"github.com/iimrudy/vUtils/encoding"
 	"github.com/iimrudy/vUtils/list"
 )
 
 func main() {
+
+	var result []byte = encoding.Base64EncodeBytes([]byte("Encoding This String to Bytes using Base64"))
+	print(result)
 
 	/*os.Remove("./file1.txt")
 	os.Remove("./file2.txt")
