@@ -77,7 +77,7 @@ func (al *ArrayList) Iterate(fun func(item interface{}, index int)) {
 }
 
 func (al *ArrayList) RangeCheck(index int) {
-	if index >= al.size {
+	if index >= al.size && index >= 0 {
 		panic(fmt.Sprintf("ArrayList # IndexOutOfBound - Given index (%d) is >= of arraylist size (%d)", index, al.size))
 	}
 }

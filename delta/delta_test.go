@@ -27,5 +27,4 @@ func TestHelloName(t *testing.T) {
 			t.Fail()
 		}
 	}
-
 }

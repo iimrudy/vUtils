@@ -6,6 +6,7 @@ import (
 
 	"github.com/iimrudy/vUtils/encoding"
 	"github.com/iimrudy/vUtils/list"
+	"github.com/iimrudy/vUtils/optional"
 )
 
 func main() {
@@ -61,21 +62,35 @@ func main() {
 	} else {
 		log.Println(string(applied))
 	}*/
+	// create a new arraylist
+	var theList *list.ArrayList = list.NewArrayList()
+	element1 := "An Item"
+	element2 := "Another Item"
+	// Add an item
+	theList.Add(element1)
+	theList.Add(element2)
 
-	log.Println("Init 10Size Timings :", TimerThisFunction(func() {
+	// Remove an item
+	theList.Remove(element1)
+
+	print(theList.Contains(element1))
+
+	log.Println("\n\n\nInit 10Size Timings :", TimerThisFunction(func() {
 		lista := list.NewArrayList()
 		doThings(lista)
-	}))
+	}), "\n\n\n ")
 
-	log.Println("FixedSize Timings :", TimerThisFunction(func() {
-		lista := list.NewArrayListSize(100)
+	log.Println("\n\n\nFixedSize Timings :", TimerThisFunction(func() {
+		lista := list.NewArrayListSize(10000000)
 		doThings(lista)
-	}))
+	}), "\n\n\n ")
 
-	/*optional.Of(lista).IfIsPresent(func(item interface{}) {
-
-	})*/
-
+	optional1 := optional.Of("")
+	optional1.IfIsPresent(func(item interface{}) {
+		print("The Item is present ", item)
+	}).IfNotPresent(func() {
+		print("The Item is NOT present ")
+	})
 }
 
 func TimerThisFunction(f func()) int64 {
@@ -87,7 +102,7 @@ func TimerThisFunction(f func()) int64 {
 
 func doThings(lista *list.ArrayList) {
 	//lista.Clear()
-	for x := 0; x < 90; x++ {
+	for x := 0; x < 10000000; x++ {
 		lista.Add(x)
 	}
 	log.Println("Size ", lista.Size())

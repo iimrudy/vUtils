@@ -28,13 +28,13 @@ func (o *Optional) IfNotPresent(f func()) *Optional {
 	return o
 }
 
-func Of(item interface{}) *Optional {
+func OfNullable(item interface{}) *Optional {
 	x := new(Optional)
 	x.item = item
 	return x
 }
 
-func OfNullable(item interface{}) *Optional {
+func Of(item interface{}) *Optional {
 	utils.PanicIfNull(item)
 	x := new(Optional)
 	x.item = item
